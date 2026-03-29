@@ -9,17 +9,29 @@ const AdminsFilter = () => {
         <div className="space-y-3">
             {/* Row 1: Search and Refresh */}
             <div className="flex items-center gap-3">
-                <SearchFilter paramName="searchTerm" placeholder="Search admins..." />
+                <SearchFilter
+                    paramName="searchTerm"
+                    placeholder="Search admins..."
+                    options={[]}
+                />
                 <RefreshButton />
             </div>
 
             {/* Row 2: Filter Controls */}
             <div className="flex items-center gap-3">
                 {/* Email Filter */}
-                <SearchFilter paramName="email" placeholder="Email" />
+                <SearchFilter
+                    paramName="email"
+                    placeholder="Email"
+                    options={[]}
+                />
 
                 {/* Contact Number Filter */}
-                <SearchFilter paramName="contactNumber" placeholder="Contact" />
+                <SearchFilter
+                    paramName="contactNumber"
+                    placeholder="Contact"
+                    options={[]}
+                />
 
                 <ClearFiltersButton />
             </div>

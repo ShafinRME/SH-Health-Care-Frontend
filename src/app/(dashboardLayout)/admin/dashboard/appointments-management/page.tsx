@@ -1,5 +1,4 @@
 import AppointmentsFilter from "@/components/modules/Admin/AppointmentsManagement/AppointmentsFilter";
-
 import AppointmentsTable from "@/components/modules/Admin/AppointmentsManagement/AppointmentsTable";
 import ManagementPageHeader from "@/components/shared/ManagementPageHeader";
 import TablePagination from "@/components/shared/TablePagination";
@@ -24,7 +23,10 @@ const AppointmentsManagementPage = async ({
                 description="View and manage all appointments"
             />
 
-            <AppointmentsFilter />
+            {/* ✅ FIX: Wrap filter in Suspense */}
+            <Suspense fallback={<div>Loading filters...</div>}>
+                <AppointmentsFilter />
+            </Suspense>
 
             <Suspense fallback={<TableSkeleton columns={7} />}>
                 <AppointmentsTable appointments={response?.data || []} />
