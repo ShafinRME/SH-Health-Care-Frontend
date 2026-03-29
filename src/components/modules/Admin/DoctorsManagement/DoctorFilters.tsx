@@ -15,7 +15,7 @@ const DoctorFilters = ({ specialties }: DoctorsFilterProps) => {
         <div className="space-y-3">
             {/* Row 1: Search and Refresh */}
             <div className="flex items-center gap-3">
-                <SearchFilter paramName="searchTerm" placeholder="Search doctors..." />
+                <SearchFilter paramName="searchTerm" placeholder="Search doctors..." options={[]} />
                 <RefreshButton />
             </div>
 
@@ -46,10 +46,10 @@ const DoctorFilters = ({ specialties }: DoctorsFilterProps) => {
                 />
 
                 {/* Email Filter */}
-                <SearchFilter paramName="email" placeholder="Email" />
+                <SearchFilter paramName="email" placeholder="Email" options={[]} />
 
                 {/* Contact Number Filter */}
-                <SearchFilter paramName="contactNumber" placeholder="Contact" />
+                <SearchFilter paramName="contactNumber" placeholder="Contact" options={[]} />
 
                 {/* Clear All Filters */}
                 <ClearFiltersButton />

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // ✅ ADD THIS
+
 import ForgotPasswordForm from "@/components/ForgotPasswordForm";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -9,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 interface ForgotPasswordPageProps {
     searchParams: Promise<{ error?: string }>;
@@ -30,6 +33,7 @@ const ForgotPasswordPage = async ({
                         your password.
                     </CardDescription>
                 </CardHeader>
+
                 <CardContent>
                     {error === "invalid-link" && (
                         <Alert variant="destructive" className="mb-4">
@@ -39,6 +43,7 @@ const ForgotPasswordPage = async ({
                             </AlertDescription>
                         </Alert>
                     )}
+
                     {error === "expired-link" && (
                         <Alert variant="destructive" className="mb-4">
                             <AlertCircle className="h-4 w-4" />
@@ -47,7 +52,11 @@ const ForgotPasswordPage = async ({
                             </AlertDescription>
                         </Alert>
                     )}
-                    <ForgotPasswordForm />
+
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <ForgotPasswordForm />
+                    </Suspense>
+
                     <div className="mt-4 text-center text-sm">
                         Remember your password?{" "}
                         <Link href="/login" className="text-primary hover:underline">
